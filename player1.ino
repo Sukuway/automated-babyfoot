@@ -34,7 +34,7 @@ pinMode(BOUTON_TEMPS_MORT1,INPUT);
 pinMode(BOUTON_FIN,INPUT);
 pinMode(BUZZER, OUTPUT);
 //Serial.begin(9600);
-attachPCINT(digitalPinToPCINT(BOUTON_TEMPS_MORT1), tempsMort, RISING);
+attachPCINT(digitalPinToPCINT(BOUTON_TEMPS_MORT1), timeout, RISING);
 tft.begin();
 tft.setRotation(1);
 tft.fillScreen(ILI9341_WHITE);
@@ -47,7 +47,7 @@ tft.drawCircle(110,180,30,ILI9341_RED);
 tft.drawCircle(200,180,30,ILI9341_RED);
 }
 
-void tempsMort(void){
+void timeout(void){
   static unsigned long dateDernierChangement = 0;
   unsigned long date = millis();
   if ((date - dateDernierChangement) > dureeAntiRebond) {

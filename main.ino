@@ -32,7 +32,7 @@ int sensorState = 0;
 
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
 
-void tempsMort(void){
+void timeout(void){
   static unsigned long dateDernierChangement = 0;
   unsigned long date = millis();
   if ((date - dateDernierChangement) > dureeAntiRebond) {
@@ -58,7 +58,7 @@ pinMode(BOUTON_TEMPS_MORT1,INPUT);
 pinMode(BOUTON_FIN,INPUT);
 pinMode(BUZZER, OUTPUT);
 pinMode(vibration_sensor, INPUT);
-attachPCINT(digitalPinToPCINT(BOUTON_TEMPS_MORT1), tempsMort, RISING);
+attachPCINT(digitalPinToPCINT(BOUTON_TEMPS_MORT1), timeout, RISING);
 tft.begin();
 tft.setRotation(1);
 tft.fillScreen(ILI9341_WHITE);

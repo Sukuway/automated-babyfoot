@@ -28,12 +28,12 @@ pinMode(BOUTON_TEMPS_MORT1,INPUT);
 pinMode(BOUTON_FIN,INPUT);
 pinMode(BUZZER, OUTPUT);
 //Serial.begin(9600);
-attachPCINT(digitalPinToPCINT(BOUTON_TEMPS_MORT1), tempsMort, RISING);
+attachPCINT(digitalPinToPCINT(BOUTON_TEMPS_MORT1), timeout, RISING);
 digitalWrite(DEL1, LOW);
   digitalWrite(DEL2, LOW);
 }
 
-void tempsMort(void){
+void timeout(void){
   static unsigned long dateDernierChangement = 0;
   unsigned long date = millis();
   if ((date - dateDernierChangement) > dureeAntiRebond) {
@@ -84,9 +84,4 @@ void loop() {
       }while(bp3);
      }
   }
-
-    
-  
-  
-
 }

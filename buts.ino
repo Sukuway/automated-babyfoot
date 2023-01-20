@@ -24,11 +24,11 @@ tft.setTextSize(12);
 scoreFinal = String(score)+"-0";
 tft.setCursor(60,20);
 tft.println(scoreFinal);
-attachPCINT(digitalPinToPCINT(vibration_sensor), but, RISING);
+attachPCINT(digitalPinToPCINT(vibration_sensor), goal, RISING);
 
 }
 
-void but(void){
+void goal(void){
   static unsigned long dateDernierChangement = 0;
   unsigned long date = millis();
   if ((date - dateDernierChangement) > dureeAntiRebond) {
